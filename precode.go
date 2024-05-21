@@ -98,9 +98,7 @@ func deliteIdTask(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Задачи нет", http.StatusNoContent)
 		return
 	}
-	req, _ := http.NewRequest("DELETE", task.ID, nil)
-	res, _ := http.DefaultClient.Do(req)
-	defer res.Body.Close()
+
 	resp, err := json.Marshal(task)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
